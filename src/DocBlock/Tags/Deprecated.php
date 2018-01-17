@@ -25,6 +25,9 @@ final class Deprecated extends BaseTag implements Factory\StaticMethod
 {
     protected $name = 'deprecated';
 
+    /** @var Description|null Description of the tag. */
+    protected $description;
+
     /**
      * PCRE regular expression matching a version vector.
      * Assumes the "x" modifier.
@@ -70,6 +73,10 @@ final class Deprecated extends BaseTag implements Factory\StaticMethod
                 null,
                 null !== $descriptionFactory ? $descriptionFactory->create($body, $context) : null
             );
+        }
+
+        if (!$descriptionFactory) {
+            throw new \UnexpectedValueException('$descriptionFactory should not be null');
         }
 
         return new static(
