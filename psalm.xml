@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<psalm
+    name="Example Psalm config with recommended defaults"
+    stopOnFirstError="false"
+    useDocblockTypes="true"
+    totallyTyped="false"
+>
+    <projectFiles>
+        <directory name="src" />
+    </projectFiles>
+
+    <issueHandlers>
+        <LessSpecificReturnType errorLevel="info" />
+
+        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+
+        <MissingClosureReturnType errorLevel="info" />
+        <MissingReturnType errorLevel="info" />
+        
+        <MissingPropertyType>
+            <errorLevel type="info">
+                <directory name="src/DocBlock/Tags" />
+            </errorLevel>
+        </MissingPropertyType>
+        
+        <UntypedParam errorLevel="info" />
+
+        <!-- ReflectionDocblock ignored issues -->
+
+        <InvalidFalsableReturnType>
+            <errorLevel type="info">
+                <file name="src/DocBlock/ExampleFinder.php" />
+            </errorLevel>
+        </InvalidFalsableReturnType>
+
+        <FalsableReturnStatement>
+            <errorLevel type="info">
+                <file name="src/DocBlock/ExampleFinder.php" />
+            </errorLevel>
+        </FalsableReturnStatement>
+
+        <PossiblyNullReference>
+            <errorLevel type="info">
+                <directory name="src/DocBlock/Tags" />
+            </errorLevel>
+        </PossiblyNullReference>
+
+        <PossiblyNullOperand>
+            <errorLevel type="info">
+                <directory name="src/DocBlock/Tags" />
+            </errorLevel>
+        </PossiblyNullOperand>
+
+    </issueHandlers>
+</psalm>
